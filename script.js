@@ -20,7 +20,7 @@ function generatePassword(){
     special = confirm("Do you want special characters?");
 
     length = prompt("How many characters would you like your password to be?");
-    while (length < 8 || length > 126){
+    while (length < 8 || length > 128){
       length = prompt("Your password must be between 8 and 126 characters. Do you want to try again?");
     }
   }
@@ -37,29 +37,55 @@ function generatePassword(){
     if (lowercase == true){
       password[i]= L[Math.floor(Math.random() * L.length)];
       i++;
-      console.log(password);
+      
     }
     if (uppercase == true){
       password[i]= U[Math.floor(Math.random() * U.length)];
       i++;
-      console.log(password);
+      
     }
     if (numbers == true){
       password[i]= N[Math.floor(Math.random() * N.length)];
       i++;
-      console.log(password);
+      
+    }
+    if (special == true){ 
+      password[i]= S[Math.floor(Math.random() * S.length)];
+      i++;
+      
     }
   }
+// takes the password array and turns it into a string - Stack Overflow
+  function shuffle(array) {
+    var currentIndex = array.length,  randomIndex;
+  
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+  
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+  return array;
+  }
+
+// takes the array and shuffles it
+  shuffle(password);
+  var password = password.join("");
+
+  return password;
 }
+
 // Write password to the #password input
-function writePassword() {
+function writePassword(){
   var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
+  var passwordText = document.getElementById("password");
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
