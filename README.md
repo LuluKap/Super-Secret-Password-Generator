@@ -7,3 +7,4 @@ If at any point they leave an area blank, say no to all parameters, or input an 
 
 Once all steps are complete you have a password that nobody can guess!!
 
+![Screenshot (20)](https://user-images.githubusercontent.com/106407757/176066210-553052b3-8794-4117-b0b6-bbb1b7bdb69f.png)
