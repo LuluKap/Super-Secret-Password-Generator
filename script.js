@@ -1,5 +1,6 @@
 generateBtn = document.querySelector("#generate");
 
+//sets up var for password generation
 function generatePassword(){
   var L = "abcdefghijklmnopqrstuvwxyz";
   var U = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -13,18 +14,20 @@ function generatePassword(){
   var special = 0
   var i = 0
 
+  //asks user for password prefernces
   function getUserInput(){
     lowercase = confirm("Do you want lowercase letters?");
     uppercase = confirm("Do you want uppercase letters?");
     numbers = confirm("Do you want numbers?");
     special = confirm("Do you want special characters?");
 
+    //sets desired length and kicks back if you provide 8< or <128
     length = prompt("How many characters would you like your password to be?");
     while (length < 8 || length > 128){
       length = prompt("Your password must be between 8 and 126 characters. Do you want to try again?");
     }
   }
-
+// kicks back if you fail to select any parameters
   getUserInput();
   while (lowercase == false && uppercase == false && numbers == false && special == false) {
     var confirmation = confirm("You must choose at least one character type. Do you want to try again?");
@@ -33,6 +36,7 @@ function generatePassword(){
     }
   }
 
+  // the letters it pulls from
   while (password.length < length){
     if (lowercase == true){
       password[i]= L[Math.floor(Math.random() * L.length)];
